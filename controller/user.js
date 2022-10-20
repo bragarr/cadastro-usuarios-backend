@@ -9,3 +9,20 @@ export const getUsers = (_, res) => {
         return res.status(200).json(data);
     });
 };
+
+export const addNewUser = (req, res) => {
+    const q = "INSERT INTO users(`nome`,`email`,`fone`,`date_of_birth`) VALUES(?)";
+
+    const values = [
+        req.body.nome,
+        req.body.email,
+        req.body.fone,
+        req.body.date_of_birth,
+    ];
+
+    db.query(q, [values], (err) => {
+        if(err) return res.json(err);
+
+        return res.status(200).json("User inserted on Database!");
+    })
+}
