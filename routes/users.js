@@ -6,10 +6,10 @@ const router = express.Router();
 
 router.get("/", getUsers);
 
-router.get("/", getUsers);
+router.get("/", addNewUser);
 
-router.get("/:id", getUsers);
+router.get("/:id", updateUser);
 
-router.get("/:id", getUsers);
+router.get("/:id", deleteUser);
 
 export default router;
