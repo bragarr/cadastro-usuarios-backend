@@ -11,13 +11,13 @@ export const getUsers = (_, res) => {
 };
 
 export const addNewUser = (req, res) => {
-    const q = "INSERT INTO users(`nome`,`email`,`fone`,`date_of_birth`) VALUES(?)";
+    const q = "INSERT INTO users(`nome`,`email`,`fone`,`tag`) VALUES(?)";
 
     const values = [
         req.body.nome,
         req.body.email,
         req.body.fone,
-        req.body.date_of_birth,
+        req.body.tag,
     ];
 
     db.query(q, [values], (err) => {
@@ -28,13 +28,13 @@ export const addNewUser = (req, res) => {
 }
 
 export const updateUser = (req, res) => {
-    const q = "UPDATE user SET `nome`=?, `email`=?, `fone`=?, `date_of_birth`=? WHERE `id`= ? ";
+    const q = "UPDATE `crudusr`.`users` SET `nome`=?, `email`=?, `fone`=?, `tag`=? WHERE (`id`= ?) ";
 
     const values = [
         req.body.nome,
         req.body.email,
         req.body.fone,
-        req.body.date_of_birth,
+        req.body.tag,
     ];
 
     db.query(q, [...values, req.params.id], (err) => {
@@ -45,7 +45,7 @@ export const updateUser = (req, res) => {
 }
 
 export const deleteUser = (req, res) => {
-    const q = "DELETE FROM users WHERE `id`=?";
+    const q = "DELETE FROM `crudusr`.`users` WHERE (`id`=?)";
 
     db.query(q, [req.params.id], (err) => {
         if(err) return res.json(err);
