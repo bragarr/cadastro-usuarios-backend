@@ -1,9 +1,4 @@
 import mysql from "mysql";
-import dotenv from "dotenv";
-
-require("dotenv").config();
-
-const hots = process.env.DB_HOST
 
 export const db = mysql.createConnection({
     host: "us-cdbr-east-06.cleardb.net",
