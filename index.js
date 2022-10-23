@@ -11,6 +11,8 @@ app.use(cors());
 
 const port = process.env.PORT || 3000;
 
+console.log(port);
+
 app.use("/", userRoutes)
 
 app.listen(port);
