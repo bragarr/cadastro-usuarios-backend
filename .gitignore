@@ -1,3 +1,6 @@
+# Diretórios para ignorar
+node_modules/
+
 # Ajuste de Acesso para banco de dados
 
-db.js
+.env
