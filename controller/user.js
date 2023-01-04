@@ -1,7 +1,7 @@
 import { db } from "../db.js";
 
 export const getUsers = (_, res) => {
-    const q = "SELECT * FROM users";
+    const q = "SELECT * FROM usuarios";
 
     db.query(q, (err, data) => {
         if(err) return res.json();
@@ -11,7 +11,7 @@ export const getUsers = (_, res) => {
 };
 
 export const addNewUser = (req, res) => {
-    const q = "INSERT INTO users(`nome`,`email`,`fone`,`tag`) VALUES(?)";
+    const q = "INSERT INTO usuarios(`nome`,`email`,`fone`,`tag`) VALUES(?)";
 
     const values = [
         req.body.nome,
@@ -28,7 +28,7 @@ export const addNewUser = (req, res) => {
 }
 
 export const updateUser = (req, res) => {
-    const q = "UPDATE `heroku_4073c21c6a2867f`.`users` SET `nome`=?, `email`=?, `fone`=?, `tag`=? WHERE (`id`= ?) ";
+    const q = "UPDATE `cad_usuarios`.`usuarios` SET `nome`=?, `email`=?, `fone`=?, `tag`=? WHERE (`idusuarios`= ?) ";
 
     const values = [
         req.body.nome,
@@ -45,7 +45,7 @@ export const updateUser = (req, res) => {
 }
 
 export const deleteUser = (req, res) => {
-    const q = "DELETE FROM `heroku_4073c21c6a2867f`.`users` WHERE (`id`=?)";
+    const q = "DELETE FROM `cad_usuarios`.`usuarios` WHERE (`id`=?)";
 
     db.query(q, [req.params.id], (err) => {
         if(err) return res.json(err);
